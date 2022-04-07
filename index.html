@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 각 부분을 테스트 할 때 주석처리 하고 실행해 볼 것! -->
+  <!--1. 기본 선언-->
+  <script>
+    alert('Hello world');
+  </script>
+  
+  <!-- 2. src와 script 동시 선언 경우 test
+    선언이 먼저 된 src속성만 실행된다.
+  -->
+  <script src="main.js">
+    alert('Hello world');
+  </script>
+</body>
+</html>
