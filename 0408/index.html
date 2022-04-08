@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let n = 123;
+    n = 12.345;
+    console.log('n = ', n);
+
+    let n1 = (1 / 0);
+    console.log('n1 = ', n1);
+
+    let n2 = (Infinity);
+    console.log('n2 = ', n2);
+
+    let n3 = ( "숫자가 아님" / 2 );
+    console.log('n3 = ', n3);
+
+    let n4 = ("숫자가 아님" / 2 + 5 );
+    console.log('n4 = ', n4);
+
+    const bigInt = 1234567890123456789012345678901234567890n;
+    console.log('bigInt =', bigInt);
+
+    let str = "Hello";
+    let str2 = 'Single quotes are ok too';
+    let phrase = `can embed another ${str}`;
+    console.log("str =", str);
+    console.log("str2 =", str2);
+    console.log("phrase =", phrase);
+
+
+    let name = "Hun";
+
+    // 변수를 문자열 중간에 삽입
+    console.log( `Hello, ${name}!` ); // Hello, Hun!
+
+    // 표현식을 문자열 중간에 삽입
+    console.log( `the result is ${1 + 2}` ); // the result is 3
+
+    let nameFieldChecked = true; // 네, name field가 확인되었습니다(checked).
+    let ageFieldChecked = false; // 아니요, age field를 확인하지 않았습니다(not checked)
+    console.log('nameFieldChecked : ', nameFieldChecked);
+    console.log('ageFieldChecked : ', ageFieldChecked);
+    
+    let highNumber = 10 > 3;
+
+    console.log( 'highNumber : ', highNumber ); // true (비교 결과: "yes")
+
+    let age = null;
+    console.log('age : ', age);
+
+    let age2;
+    console.log('age2 : ', age2); // 'undefined'가 출력됩니다.
+
+    let age3 = 100;
+
+    // 값을 undefined로 바꿉니다.
+    age3 = undefined;
+
+    console.log('age3 : ', age3); // "undefined"
+
+    console.log(typeof undefined); // "undefined"
+
+    console.log(typeof 0); // "number"
+
+    console.log(typeof 10n); // "bigint"
+
+    console.log(typeof true );// "boolean"
+
+    console.log(typeof "foo"); // "string"
+
+    console.log(typeof Symbol("id")); // "symbol"
+
+    console.log(typeof Math); // "object"  
+
+    console.log(typeof null); // "object"  
+
+    console.log(typeof alert); // "function"  
+
+
+
+    </script>
+</body>
+</html>
