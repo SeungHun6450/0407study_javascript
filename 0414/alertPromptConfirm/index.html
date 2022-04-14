@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // alert, prompt, confirm
+  
+    // alert: 사용자가 확인(ok)버튼을 누를 때 까지 메세지 창이 떠있음
+    alert("Hello!");
+  
+    // prompt: 사용자에게 보여줄 문자열, 입력 필드의 선택값
+    // result = prompt(title,[default]);
+
+    let age = prompt("나이를 입력해주세요.", 100)
+    alert(`당신의 나이는 ${age}살 입니다`); // 당신의 나이는 100살 입니다.
+  
+    // confirm : 사용자가 확인(ok)버튼을 누르면truem 그 외는 false를 반환
+    let isBoss = confirm("당신이 주인인가요?");
+    alert(isBoss);  // 확인 버튼을 누르면 ture가 출력
+  
+  </script>
+</body>
+</html>
