@@ -12,3 +12,7 @@ I studied data type
 
 I get VOVID-19. So i couldn't studied past days
 Today, I study 3 chapter 
+
+### 0415 
+
+I studied ifElse and logial operators
