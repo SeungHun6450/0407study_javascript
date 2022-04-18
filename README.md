@@ -16,3 +16,15 @@ Today, I study 3 chapter
 ### 0415 
 
 I studied ifElse and logial operators
+
+### 0416
+
+I studied nollish
+
+### 0417
+
+I studied while, for
+
+### 0418
+
+I stuided switch
