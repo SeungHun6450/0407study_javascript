@@ -28,3 +28,7 @@ I studied while, for
 ### 0418
 
 I stuided switch
+
+### 0419-0420
+
+I studied Function
