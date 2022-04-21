@@ -32,3 +32,7 @@ I stuided switch
 ### 0419-0420
 
 I studied Function
+
+### 0421
+
+I studied Function expression
