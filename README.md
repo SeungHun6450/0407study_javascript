@@ -36,3 +36,15 @@ I studied Function
 ### 0421
 
 I studied Function expression
+
+### 0428~0429
+
+I studied Object
+
+### 0502
+
+I studied Copy and Garbage Collector
+
+### 0506
+
+I studied Method, this, new and constructor function

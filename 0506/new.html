@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // new 연산자와 생성자 함수
+    // 생성자 함수(constructor function)
+    // - 생성자 함수 이름의 첫 글자는 대문자로 시작한다(Pascal case)
+    // - 반드시 `new` 연산자를 붙여 실행한다.
+
+    function User(name) {
+      this.name = name;
+      this.isAdmin = false;
+    }
+
+    let user = new User("Hun");
+
+    console.log(user.name); // Hun
+    console.log(user.isAdmin); // false
+
+    // `new`를 써서 함수를 실행하면 아래와 같은 알고리즘이 동작한다.
+    // 1. 빈 객체를 만들어 `this`에 할당한다.
+    // 2. 함수 본문을 실행한다. `this`에 새로운 프로퍼티를 추가하여 `this`를 수정한다.
+    // 3. this를 반환한다.
+
+    // 위의 예시에 설명을 붙혀보자.
+    function User(name) {
+      // this = {}; / 빈 객체가 암시적으로 만들어진다.
+
+      // 새로운 프로퍼티를 this에 추가한다.
+      this.name = name;
+      this.isAdmin = false;
+
+      // return this; / this가 암시적으로 반환된다.
+    }
+
+    let user = new User("Hun");
+    let user = {
+      name: "Hun",
+      isAdmin: false
+    };
+
+    console.log(user.name); // Hun
+    console.log(user.isAdmin); // false
+
+    // 생성자의 의의는 바로 재사용할 수 있는 객체 생성 코드를 구현하는 것이다.
+
+    // new.target과 생성자 함수
+    // `new.target` 프로퍼티를 사용하면 함수가 `new`와 함께 호출되었는지 아닌지를 알 수 있다.
+    // 일반적인 방법으로 함수를 호출했다면 `new.target`은 undefined를 반환한다.
+    // 반면 `new`와 함께 호출한 경우엔 `new.target`은 함수 자체를 반환해준다.
+
+    function User() {
+      console.log(new.target);
+    }
+
+    // 'new' 없이 호출
+    User(); // undefined
+
+    // 'new'를 붙여 호출
+    new User(); // function User { ... }
+    
+    // 함수 본문에서 `new.target`을 사용하면 해당 함수가 `new`와 함께 호출되었는지(in constructor mode) 아닌지(in regular mode)를 확인할 수 있다.
+    function User(name) {
+      if (!new.target) { // new 없이 호출해도
+        return new User(name); // new를 붙여준다
+      }
+
+      this.name = name;
+    }
+
+    let Hun = User("Hun"); // 'new User'를 쓴 것처럼 바꿔준다.
+    console.log(Hun.name); // Hun
+
+
+    // 생성자와 return문
+    // 생성자 함수에 보통 `return`문이 없다. 반환해야 할 것들은 모두 `this`에 저장되고, `this`는 자동으로 반환되기 때문이다.
+    // 만약 `return`문이 있다면 아래와 같은 규칙이 적용된다.
+    // - 객체를 `return` 한다면 `this`대신 객체가 반환된다.
+    function BigUser() {
+
+    this.name = "small";
+
+    return { name: "big" };  // this가 아닌 새로운 객체를 반환
+    }
+
+    console.log( new BigUser().name );  // big
+
+    // - 원시형을 `return` 한다면 `return` 문이 무시된다.
+    function SmallUser() {
+
+    this.name = "small";
+
+    return; // this를 반환함
+    }
+
+    alert( new SmallUser().name );  // small
+
+
+    // 생성자 내 메소드
+    // 생성자 함수를 사용하면 매개변수를 이용해 객체 내부를 자유롭게 구성할 수 있다.
+    // 메소드에도 프로퍼티를 더해주는 것이 가능하다.
+    function User(name) {
+    this.name = name;
+
+    this.sayHi = function() {
+        console.log( "제 이름은 " + this.name + " 입니다." );
+      };
+    }
+
+    let Hun = new User("Hun");
+
+    Hun.sayHi(); // 제 이름은 Hun 입니다.
+
+    /*
+    Hun = {
+      name: "Hun",
+      sayHi: function() { ... }
+    }
+    */
+  </script>
+</body>
+</html>
