@@ -48,3 +48,7 @@ I studied Copy and Garbage Collector
 ### 0506
 
 I studied Method, this, new and constructor function
+
+### 0509
+
+I studied Symbol and ToPrimitive
