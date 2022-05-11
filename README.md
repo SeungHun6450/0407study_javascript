@@ -56,3 +56,7 @@ I studied Symbol and ToPrimitive
 ### 0510
 
 I studied Number
+
+### 0511
+
+I studied Character
