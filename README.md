@@ -60,3 +60,7 @@ I studied Number
 ### 0511
 
 I studied Character
+
+### 0512 
+
+I studied Array
