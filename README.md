@@ -64,3 +64,7 @@ I studied Character
 ### 0512 
 
 I studied Array
+
+### 0513
+
+I studied Array and Method
