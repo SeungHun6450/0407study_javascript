@@ -72,3 +72,7 @@ I studied Array and Method
 ### 0523
 
 I studied Iterable
+
+### 0524
+
+I studied Map and Set
