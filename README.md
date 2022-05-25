@@ -76,3 +76,7 @@ I studied Iterable
 ### 0524
 
 I studied Map and Set
+
+### 0525
+
+I studied WeakMap & WeakSet
