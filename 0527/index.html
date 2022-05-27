@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //     구조 분해 할당
+    // 객체와 배열은 javascript에서 가장 많이 쓰이는 자료구조이다.
+
+    // 개발을 할 때 함수에 객체나 배열을 전달해야 하는 경우가 생기는데 가끔 이 객체나 배열의 전체 데이터가 아니라 일부 데이터만 필요한 경우가 생긴다.
+
+    // 이럴 때 객체나 배열을 변수로 "분해"할 수 있게 해주는 구조 분해 할당을 사용할 수 있다.
+
+    // 1. 배열 분해하기
+    // 예제를 통해 배열이 어떻게 변수로 분해가 되는지 예제를 통해 살펴보자.
+
+    // 이름과 성을 요소로 가진 배열
+    let arr = ["Seung", "Hun"]
+
+    // 구조 분해 할당을 이용해 firstName엔 arr[0], surname엔 arr[1]을 할당
+    let [firstName, surname] = arr;
+
+    console.log(firstName); // Seung
+    console.log(surname);  // Hun
+    // index를 이용해 배열에 접근하지 않고도 변수로 이름과 성을 사용할 수 있게 되었다.
+
+    // 또한 split()같은 반환 값이 배열인 메소드를 함께 활용해도 좋다.
+
+    let [firstName, surname] = "Seung Hun".split('');
+    // 이 외에 배열 분해의 특징을 알아보자.
+
+    // 구조 분해의 대상은 수정 또는 파괴되지 않는다.
+    // 쉼표를 사용하여 필요하지 않은 배열 요소를 버릴 수 있다.
+
+    // 두 번째 요소는 필요하지 않음
+    let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+
+    console.log( title ); // Consul
+
+    // 할당 연산자 우측엔 모든 iterable이 올 수 있다.
+    let [a, b, c] = "abc"; // ["a", "b", "c"]
+    let [one, two, three] = new Set([1, 2, 3]);
+
+    // 할당 연산자 좌측엔 할당할 수 있는 모든 것이 올 수 있다.
+    let user = {};
+    [user.name, user.surname] = "Seung Hun".split(' ');
+
+    console.log(user.name); // Bora
+
+    // .entries()로 반복할 수 있다. 이 메소드와 구조 분해를 조합하면 객체의 key와 value를 순회하여 변수로 분해 할당할 수 있다.
+    // map에서도 활용이 가능하다.
+
+    let user = {
+      name: "Hun",
+      age: 27
+    };
+
+    // 객체의 키와 값 순회하기
+    for (let [key, value] of Object.entries(user)) {
+      console.log(`${key}:${value}`); // name:Hun, age:27이 차례대로 출력
+    }
+    let user = new Map();
+    user.set("name", "John");
+    user.set("age", "30");
+
+    for (let [key, value] of user) {
+      console.log(`${key}:${value}`); // name:John, then age:30
+    }
+
+    // 두 변수에 저장된 값을 교환할 때 구조 분해 할당을 사용할 수 있다.
+
+    let guest = "Hun";
+    let admin = "Seung";
+
+    // 변수 guest엔 Hun, 변수 admin엔 Seung 저장되도록 값을 교환함
+    [guest, admin] = [admin, guest];
+
+    console.log(`${guest} ${admin}`); // Seung Hun(값 교환)
+
+    // 1-1. '...'(전개연산자)로 나머지 요소 가져오기
+    // 배열 앞쪽의 몇 개의 값만 필요하고 그 이후 나머지 값들을 따로 모아서 저장해야 할 때 어떻게 해야할까? 이럴때 ...인 전개연산자를 사용하면 나머지를 가져올 수 있다!
+
+    let [name1, name2, ...rest] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+
+    console.log(name1); // Julius
+    console.log(name2); // Caesar
+
+    // `rest`는 배열
+    console.log(rest[0]); // Consul
+    console.log(rest[1]); // of the Roman Republic
+    console.log(rest.length); // 2
+
+    // 1-2. 기본 값
+    // 할당하고자 하는 변수의 개수가 분해하고자 하는 배열의 길이보다 크더라도 에러가 발생하지 않는다. 할당할 값이 없으면 undefined로 취급되기 때문이다.
+
+    let [firstName, surname] = [];
+
+    console.log(firstName); // undefined
+    console.log(surname); // undefined
+
+    // =을 이용하면 할당할 값이 없을 때 기본으로 할당해 줄 값인 "기본 값(default value)"을 설정할 수 있다.
+
+    // 기본값
+    let [name = "Guest", surname = "Anonymous"] = ["Hun"];
+
+    console.log(name);    // Hun (배열에서 받아온 값)
+    console.log(surname); // Anonymous (기본값)
+    
+    // 2. 객체 분해하기
+    // 구조 분해 할당으로 객체도 분해할 수 있다.
+
+    let {var1, var2} = {var1:…, var2:…}
+
+    // 할당 연산자 우측엔 분해하고자 하는 객체를, 좌측엔 상응하는 객체 프로퍼티의 패턴을 넣는다.
+
+    // 아래의 예시를 살펴보자!
+
+    let options = {
+      title: "Menu",
+      width: 100,
+      height: 200
+    };
+
+    let {title, width, height} = options;
+
+    console.log(title);  // Menu
+    console.log(width);  // 100
+    console.log(height); // 200
+
+    // 프로퍼티 options.title과 options.width, options.height에 저장된 값이 상응하는 변수에 할당된 것을 확인할 수 있다. 참고로 순서는 중요하지 않다.
+
+    // 아래처럼 작성해도 위와 동일하게 동작한다.
+
+    // let {...} 안의 순서가 바뀌어도 동일하게 동작함
+    let {height, width, title} = { title: "Menu", height: 200, width: 100 }
+
+    // 할당 연산자 좌측에는 좀 더 복잡한 패턴이 올 수도 있는데 분해하려는 객체의 프로퍼티와 변수의 연결을 원하는 대로 조정할 수도 있다.
+
+    // 객체 프로퍼티를 프로퍼티 key와 다름 이름을 가진 변수에 저장할 때 좌측 패턴에 콜론(:)을 사용하면 된다.
+
+    // 아래의 예시를 살펴보자!
+
+    let options = {
+      title: "Menu",
+      width: 100,
+      height: 200
+    };
+
+    // { 객체 프로퍼티: 목표 변수 }
+    let {width: w, height: h, title} = options;
+
+    // width -> w
+    // height -> h
+    // title -> title
+
+    console.log(title);  // Menu
+    console.log(w);      // 100
+    console.log(h);      // 200
+
+    // 프로퍼티가 없는 경우를 대비하여 =을 사용해 기본 값을 설정하는 것도 가능하다.
+    // 아래의 예시를 보자!
+
+    let options = {
+      title: "Menu"
+    };
+
+    let {width = 100, height = 200, title} = options;
+
+    console.log(title);  // Menu
+    console.log(width);  // 100
+    console.log(height); // 200
+
+    // 콜론과 할당 연산자를 동시에 사용도 가능하며 원하는 정보만 뽑아오는 것도 가능하다.
+
+    let options = {
+      title: "Menu"
+    };
+
+    let {width: w = 100, height: h = 200, title} = options;
+
+    console.log(title);  // Menu
+    console.log(w);      // 100
+    console.log(h);      // 200
+
+    let options = {
+      title: "Menu",
+      width: 100,
+      height: 200
+    };
+
+    // title만 변수로 뽑아내기
+    let { title } = options;
+
+    console.log(title); // Menu
+
+    // 객체에서도 전개연산자...을 사용할 수 있지만 구식 브라우저는 지원하지 않으므로 주의해서 사용 해야한다.
+
+    let options = {
+      title: "Menu",
+      height: 200,
+      width: 100
+    };
+
+    // title = 이름이 title인 프로퍼티
+    // rest = 나머지 프로퍼티들
+    let {title, ...rest} = options;
+
+    // title엔 "Menu", rest엔 {height: 200, width: 100}이 할당
+    console.log(rest.height);  // 200
+    console.log(rest.width);   // 100
+
+    // 이때, 주의할 점이 있는데 let으로 새로운 변수를 선언하지 않고 기존에 있던 변수에 분해한 값을 할당할 수도 있는데 {...}을 코드 블록으로 인식하므로 소괄호 ( )를 같이 써주면 된다.
+
+    let title, width, height;
+
+    // SyntaxError: Unexpected token '=' 이라는 에러가 아랫줄에서 발생한다.
+    // {title, width, height} = {title: "Menu", width: 200, height: 100};
+
+    // 에러가 발생하지 않는다.
+    ({title, width, height} = {title: "Menu", width: 200, height: 100});
+
+    console.log( title ); // Menu
+
+    // 3. 중첩 구조 분해
+    // 객체나 배열이 다른 객체나 배열을 포함하는 경우, 좀 더 복잡한 패턴을 사용하면 중첩 배열이나 객체의 정보를 추출할 수 있다. 이를 중첩 구조 분해 라고 부른다.
+
+    // 아래의 예시를 살펴보자!
+
+    let options = {
+      size: {
+        width: 100,
+        height: 200
+      },
+      items: ["Cake", "Donut"],
+      extra: true
+    };
+
+    // 코드를 여러 줄에 걸쳐 작성해 의도하는 바를 명확히 드러냄
+    let {
+      size: { // size는 여기,
+        width,
+        height
+      },
+      items: [item1, item2], // items는 여기에 할당함
+      title = "Menu" // 분해하려는 객체에 title 프로퍼티가 없으므로 기본값을 사용함
+    } = options;
+
+    console.log(title);  // Menu
+    console.log(width);  // 100
+    console.log(height); // 200
+    console.log(item1);  // Cake
+    console.log(item2);  // Donut
+  </script>
+</body>
+</html>

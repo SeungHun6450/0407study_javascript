@@ -85,3 +85,8 @@ I studied WeakMap & WeakSet
 ### 0526
 
 I studied Object.keys, values, entries
+
+
+### 0527
+
+I studied Destructing Assignment
