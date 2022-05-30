@@ -90,3 +90,7 @@ I studied Object.keys, values, entries
 ### 0527
 
 I studied Destructing Assignment
+
+### 0528
+
+I studied Date
