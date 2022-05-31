@@ -91,6 +91,10 @@ I studied Object.keys, values, entries
 
 I studied Destructing Assignment
 
-### 0528
+### 0530
 
 I studied Date
+
+## 0531
+
+I studied JSON
