@@ -102,3 +102,7 @@ I studied JSON
 ## 0607
 
 I studied `...`, spread
+
+## 0614
+
+I studied var, window

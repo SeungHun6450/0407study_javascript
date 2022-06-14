@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. var
+    if (true) {
+      var test = true; // 'let' 대신 'var'를 사용
+    }
+
+    console.log(test); // true(if 문이 끝났어도 변수에 여전히 접근할 수 있음)
+
+    if (true) {
+      let test = true; // 'let'으로 변수를 선언
+    }
+
+    console.log(test); // Error: test is not defined
+
+
+    for (var i = 0; i < 10; i++) {
+      // ...
+    }
+
+    console.log(i); // 10, 반복문이 종료되었지만 'i'는 전역 변수이므로 여전히 접근 가능하다
+
+
+    function sayHi() {
+      if (true) {
+        var phrase = "Hello";
+      }
+
+      console.log(phrase); // 제대로 출력된다.
+    }
+
+    sayHi();
+    console.log(phrase); // Error: phrase is not defined
+
+
+    // let으로 선언
+    let user;
+    let user;	// SyntaxError: 'user' has already been declared
+
+    // var로 선언
+    var user = "Hun";
+    var user = "Seung";
+
+    console.log(user);	// Seung
+
+
+    function sayHi() {
+      phrase = "Hello";
+
+      console.log(phrase);
+
+      var phrase;
+    }
+    sayHi();
+    function sayHi() {
+      var phrase;
+      
+      phrase = "Hello";
+
+      console.log(phrase);
+
+    }
+    sayHi();
+    function sayHi() {
+      phrase = "Hello"
+      
+        if (false) {
+        var phrase;
+      }
+
+      console.log(phrase);
+    }
+    sayHi();
+
+
+    function sayHi() {
+      console.log(phrase);
+
+      var phrase = "Hello";
+    }
+
+    sayHi();
+
+
+    function sayHi() {
+      var phrase; // 선언은 함수 시작 시 처리
+
+      console.log(phrase); // undefined
+
+      phrase = "Hello"; // 할당은 실행 흐름이 해당 코드에 도달했을 때 처리
+    }
+
+    sayHi();
+
+    (function() {
+
+      let message = "Hello";
+
+      console.log(message); // Hello
+
+    })();
+
+    (function() {
+        console.log("함수를 괄호로 둘러싸기");
+      })();
+
+      (function() {
+        console.log("전체를 괄호로 둘러싸기");
+      }());
+
+      !function() {
+        console.log("표현식 앞에 비트 NOT 연산자 붙이기");
+      }();
+
+      +function() {
+        console.log("표현식 앞에 단항 덧셈 연산자 붙이기");
+    }();
+
+
+    
+    // 2. window
+    console.log("Hello");
+    // 위와 동일하게 동작
+    window.console.log("Hello");
+
+    var gVar = 5;
+
+    console.log(window.gVar); // 5 (var로 선언한 변수는 전역 객체 window의 프로퍼티가 된다)
+  
+    let gLet = 5;
+
+    console.log(window.gLet); // undefined (let으로 선언한 변수는 전역 객체의 프로퍼티가 되지 않는다)
+    // console.log(globalThis.gLet);
+  
+
+    // 모든 스크립트에서 현재 사용자(current user)에 접근할 수 있게 이를 전역 객체에 추가함
+    window.currentUser = {
+      name: "John"
+    };
+
+    // 아래와 같은 방법으로 모든 스크립트에서 currentUser에 접근할 수 있음
+    console.log(currentUser.name);  // John
+
+    // 지역 변수 'currentUser'가 있다면
+    // 지역 변수와 충돌 없이 전역 객체 window에서 이를 명시적으로 가져올 수 있음
+    console.log(window.currentUser.name); // John
+  
+
+    if (!window.Promise) {
+      console.log("구식 브라우저를 사용 중이시군요!");
+    }
+
+    if (!window.Promise) {
+      window.Promise = ... // 모던 자바스크립트에서 지원하는 기능을 직접 구현함
+    }
+  </script>
+  
+</body>
+</html>
