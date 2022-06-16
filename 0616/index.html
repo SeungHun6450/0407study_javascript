@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function sayHi() {
+      console.log("Hi");
+    }
+
+    console.log(sayHi.name); // sayHi
+
+    let sayHi = function() {
+      console.log("Hi");
+    };
+
+    console.log(sayHi.name); // sayHi (익명 함수이지만 이름이 있다.)
+
+
+    function f(sayHi = function() {}) {
+      console.log(sayHi.name); // sayHi (이름이 있다)
+    }
+
+    f();
+
+
+    let user = {
+
+    sayHi() {
+      // ...
+    },
+
+    sayBye: function() {
+      // ...
+    }
+
+    }
+
+    console.log(user.sayHi.name); // sayHi
+    console.log(user.sayBye.name); // sayBye
+
+
+    // 배열 안에서 함수를 생성함
+    let arr = [function() {}];
+
+    console.log( arr[0].name ); // <빈 문자열>
+    // 엔진이 이름을 설정할 수 없어서 name 프로퍼티의 값이 빈 문자열이 됨
+
+
+    function f1(a) {}
+    function f2(a, b) {}
+    function many(a, b, ...more) {}
+
+    console.log(f1.length); // 1
+    console.log(f2.length); // 2
+    console.log(many.length); // 2
+
+
+    function ask(question, ...handlers) {
+      let isYes = confirm(question);
+
+      for(let handler of handlers) {
+        if (handler.length == 0) {
+          if (isYes) handler();
+        } else {
+          handler(isYes);
+        }
+      }
+
+    }
+
+    // 사용자가 OK를 클릭한 경우, 핸들러 두 개를 모두 호출함
+    // 사용자가 Cancel을 클릭한 경우, 두 번째 핸들러만 호출함
+    ask("질문 있으신가요?", () => alert('OK를 선택하셨습니다.'), 
+    result => console.log(result));
+
+
+    function sayHi() {
+      console.log("Hi");
+
+      // 함수를 몇 번 호출했는지 세봅시다.
+      sayHi.counter++;
+    }
+    sayHi.counter = 0; // 초깃값
+
+    sayHi(); // Hi
+    sayHi(); // Hi
+
+    console.log( `호출 횟수: ${sayHi.counter}회` ); // 호출 횟수: 2회
+  
+
+    function makeCounter() {
+
+    // let count = 0 대신 아래 메서드(프로퍼티)를 사용함
+
+    function counter() {
+      return counter.count++;
+    };
+
+    counter.count = 0;
+
+    return counter;
+    }
+
+    let counter = makeCounter();
+    console.log( counter() ); // 0
+    console.log( counter() ); // 1
+  
+  
+    function makeCounter() {
+
+    function counter() {
+      return counter.count++;
+    };
+
+    counter.count = 0;
+
+    return counter;
+    }
+
+    let counter = makeCounter();
+
+    counter.count = 10;
+    console.log( counter() ); // 10
+
+    let sayHi = function(who) {
+      console.log(`Hello, ${who}`);
+    };
+
+    let sayHi = function func(who) {
+      console.log(`Hello, ${who}`);
+    };
+
+    let sayHi = function func(who) {
+      console.log(`Hello, ${who}`);
+    };
+    sayHi("John"); // Hello, John
+
+
+    let sayHi = function func(who) {
+      if (who) {
+        console.log(`Hello, ${who}`);
+      } else {
+        func("Guest"); // func를 사용해서 자신을 호출
+      }
+    };
+
+    sayHi(); // Hello, Guest
+
+    // 하지만 아래와 같이 func를 호출하는 건 불가능하다
+    func(); // Error, func is not defined (기명 함수 표현식 밖에서는 그 이름에 접근할 수 없다.)
+  
+  
+  
+    let sayHi = function(who) {
+      if (who) {
+        console.log(`Hello, ${who}`);
+      } else {
+        sayHi("Guest");
+      }
+    };
+
+    let sayHi = function(who) {
+      if (who) {
+        console.log(`Hello, ${who}`);
+      } else {
+        sayHi("Guest"); // TypeError: sayHi is not a function
+      }
+    };
+
+    let welcome = sayHi;
+    sayHi = null;
+
+    welcome(); // 중첩 sayHi 호출은 더 이상 불가능하다
+
+
+
+    let sayHi = function func(who) {
+      if (who) {
+        console.log(`Hello, ${who}`);
+      } else {
+        func("Guest"); // 원하는 값이 제대로 출력됩니다.
+      }
+    };
+
+    let welcome = sayHi;
+    sayHi = null;
+
+    welcome(); // Hello, Guest (중첩 호출이 제대로 동작함)
+  </script>
+</body>
+</html>

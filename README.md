@@ -106,3 +106,7 @@ I studied `...`, spread
 ## 0614
 
 I studied var, window
+
+## 0616
+
+I studied object and function
