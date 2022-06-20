@@ -110,3 +110,11 @@ I studied var, window
 ## 0616
 
 I studied object and function
+
+## 0617 
+
+I studied new function and setTimeout, setInterval
+
+## 0620
+
+I studied function binding
