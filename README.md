@@ -118,3 +118,7 @@ I studied new function and setTimeout, setInterval
 ## 0620
 
 I studied function binding
+
+## 0622
+
+I studied arrow function
