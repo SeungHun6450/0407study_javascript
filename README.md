@@ -122,3 +122,7 @@ I studied function binding
 ## 0622
 
 I studied arrow function
+
+## 0624
+
+I studied object property setting
