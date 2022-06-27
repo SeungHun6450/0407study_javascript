@@ -126,3 +126,8 @@ I studied arrow function
 ## 0624
 
 I studied object property setting
+
+
+## 0627
+
+I studied Prototype
