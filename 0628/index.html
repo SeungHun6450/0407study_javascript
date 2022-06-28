@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let animal = {
+      eats: true
+    };
+
+    // 프로토타입이 animal인 새로운 객체를 생성합니다.
+    let rabbit = Object.create(animal);
+
+    console.log(rabbit.eats); // true
+
+    console.log(Object.getPrototypeOf(rabbit) === animal); // true
+
+    Object.setPrototypeOf(rabbit, {}); // rabbit의 프로토타입을 {}으로 바꾼다
+  
+    let animal2 = {
+      eats: true
+    };
+
+    let rabbit2 = Object.create(animal2, {
+      jumps: {
+        value: true
+      }
+    });
+
+    console.log(rabbit2.jumps); // true
+  
+
+    let obj1 = {};
+
+    let key1 = prompt("입력하고자 하는 key는 무엇인가요?", "__proto__");
+    obj[key1] = "...값...";
+
+    console.log(obj[key1]); // "...값..."이 아닌 [object Object]가 출력
+
+
+    let obj2 = Object.create(null);
+
+    let key2 = prompt("입력하고자 하는 key는 무엇인가요?", "__proto__");
+    obj[key2] = "...값...";
+
+    console.log(obj[key2]); // "...값..."이 제대로 출력
+  
+  
+    let obj3 = Object.create(null);
+
+    console.log(obj3); // Error: Cannot convert object to primitive value (toString이 없음)
+  
+    let chineseDictionary = Object.create(null);
+    chineseDictionary.hello = "你好";
+    chineseDictionary.bye = "再见";
+
+    console.log(Object.keys(chineseDictionary)); // hello,bye
+  
+    let animal3 = {
+      eats: true
+    };
+
+    function Rabbit(name) {
+      this.name = name;
+    }
+
+    Rabbit.prototype = animal3;
+
+    let rabbit3 = new Rabbit("흰 토끼"); //  rabbit.__proto__ == animal
+
+    console.log( rabbit3.eats ); // true
+  
+
+    function Rabbit() {}
+    // 디폴트 prototype:
+    // Rabbit.prototype = { constructor: Rabbit }
+
+    let rabbit4 = new Rabbit(); // {constructor: Rabbit}을 상속받음
+
+    console.log(rabbit4.constructor == Rabbit); // true ([[Prototype]]을 거쳐 접근함)
+  
+
+    function Rabbit(name) {
+      this.name = name;
+      console.log(name);
+    }
+
+    let rabbit5 = new Rabbit("흰 토끼");
+
+    let rabbit6 = new rabbit5.constructor("검정 토끼");
+  
+    function Rabbit() {}
+    Rabbit.prototype = {
+      jumps: true
+    };
+
+    let rabbit7 = new Rabbit();
+    console.log(rabbit7.constructor === Rabbit); // false
+  
+  
+    function Rabbit() {}
+
+    // Rabbit.prototype 전체를 덮어쓰지 말고
+    // 원하는 프로퍼티가 있으면 그냥 추가한다.
+    Rabbit.prototype.jumps = true
+    // 이렇게 하면 디폴트 프로퍼티 Rabbit.prototype.constructor가 유지된다.
+  
+  
+
+    Rabbit.prototype = {
+      jumps: true,
+      constructor: Rabbit
+    };
+    // 수동으로 constructor를 추가해 주었기 때문에 우리가 알고 있던 
+    // constructor의 특징을 그대로 사용할 수 있다. 
+  </script>
+</body>
+</html>

@@ -131,3 +131,8 @@ I studied object property setting
 ## 0627
 
 I studied Prototype
+
+
+## 0627
+
+I studied Prototype method, prototype property of function
