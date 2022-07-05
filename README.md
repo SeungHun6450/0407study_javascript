@@ -141,3 +141,8 @@ I studied Prototype method, prototype property of function
 ## 0701
 
 I studied call/apply and decorator, forwarding
+
+
+## 0705
+
+I studied class
