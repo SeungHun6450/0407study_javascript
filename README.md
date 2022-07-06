@@ -146,3 +146,8 @@ I studied call/apply and decorator, forwarding
 ## 0705
 
 I studied class
+
+
+## 0706
+
+I studied class inherit
