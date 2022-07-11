@@ -151,3 +151,12 @@ I studied class
 ## 0706
 
 I studied class inherit
+
+
+## 0708
+
+I studied class inherit(2)
+
+## 0711
+
+I studied static method, static property
