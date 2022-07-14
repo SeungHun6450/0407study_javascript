@@ -160,3 +160,7 @@ I studied class inherit(2)
 ## 0711
 
 I studied static method, static property
+
+## 0714
+
+I studied private, protected property and method
